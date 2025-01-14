@@ -7,9 +7,11 @@
     <title>Apple iPhone</title>
     <link rel="stylesheet" href="path-to-your-css/index.css" />
   </head>
-  <body class="overflow-hidden relative overflow-x-hidden">
+  <body class="relative overflow-x-hidden w-full">
     <div class="absolute z-10 w-full h-screen bg-black loading-wrapper">
-      <div class="z-10 h-screen w-full flex justify-center items-center fixed top-0">
+      <div
+        class="z-10 h-screen w-full flex justify-center items-center fixed top-0"
+      >
         <div class="loader"></div>
       </div>
     </div>
@@ -19,27 +21,30 @@
     <script type="module" src="/src/main.jsx"></script>
 
     <script>
-      window.addEventListener("load", () => {
-        const mediaElements = document.querySelectorAll("img, video");
-        let loadedCount = 0;
-        const totalElements = mediaElements.length;
+     
+        window.addEventListener("load", () => {
+          const mediaElements = document.querySelectorAll("img, video");
+          let loadedCount = 0;
+          const totalElements = mediaElements.length;
 
-        const checkLoaded = () => {
-          loadedCount++;
-          if (loadedCount === totalElements) {
-            document.querySelector(".loading-wrapper").classList.add("hidden");
-            document.body.classList.remove("overflow-hidden");
-          }
-        };
+          const checkLoaded = () => {
+            loadedCount++;
+            if (loadedCount === totalElements) {
+              document
+                .querySelector(".loading-wrapper")
+                .classList.add("hidden");
+              document.body.classList.remove("overflow-hidden");
+            }
+          };
 
-        mediaElements.forEach((element) => {
-          if (element.complete || element.readyState === 4) {
-            checkLoaded();
-          } else {
-            element.onload = element.onloadeddata = checkLoaded;
-          }
+          mediaElements.forEach((element) => {
+            if (element.complete || element.readyState === 4) {
+              checkLoaded();
+            } else {
+              element.onload = element.onloadeddata = checkLoaded;
+            }
+          });
         });
-      });
     </script>
   </body>
 </html>
