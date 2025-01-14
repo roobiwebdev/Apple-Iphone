@@ -1,13 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/apple.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apple iPhone</title>
+    <link rel="stylesheet" href="path-to-your-css/index.css" />
   </head>
-  <body>
+  <body class="overflow-hidden relative">
+    <div class="absolute z-10 w-full h-screen bg-black loading-wrapper">
+      <div
+        class="z-10 h-screen w-full flex justify-center items-center fixed top-0"
+      >
+        <div class="loader"></div>
+      </div>
+    </div>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      window.onload = () => {
+        document.querySelector(".loading-wrapper").classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+      };
+    </script>
   </body>
 </html>
