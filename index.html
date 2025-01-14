@@ -20,8 +20,25 @@
 
     <script>
       window.addEventListener("load", () => {
-        document.querySelector(".loading-wrapper").classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
+        const mediaElements = document.querySelectorAll("img, video");
+        let loadedCount = 0;
+        const totalElements = mediaElements.length;
+
+        const checkLoaded = () => {
+          loadedCount++;
+          if (loadedCount === totalElements) {
+            document.querySelector(".loading-wrapper").classList.add("hidden");
+            document.body.classList.remove("overflow-hidden");
+          }
+        };
+
+        mediaElements.forEach((element) => {
+          if (element.complete || element.readyState === 4) {
+            checkLoaded();
+          } else {
+            element.onload = element.onloadeddata = checkLoaded;
+          }
+        });
       });
     </script>
   </body>
