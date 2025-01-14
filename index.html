@@ -7,7 +7,7 @@
     <title>Apple iPhone</title>
     <link rel="stylesheet" href="path-to-your-css/index.css" />
   </head>
-  <body class="overflow-hidden relative">
+  <body class="overflow-hidden relative overflow-x-hidden">
     <div class="absolute z-10 w-full h-screen bg-black loading-wrapper">
       <div
         class="z-10 h-screen w-full flex justify-center items-center fixed top-0"
@@ -19,7 +19,7 @@
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx"></script>
-    
+
     <script>
       window.onload = () => {
         document.querySelector(".loading-wrapper").classList.add("hidden");
